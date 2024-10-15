@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simple System Code Challenge App 🚀
 
-## Getting Started
+Welcome to the Simple System Code Challenge App! This application allows users to search for GitHub users and view their repositories in an interactive and engaging way. Let's dive in!
 
-First, run the development server:
+## 🎯 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Search GitHub Users**: Input a GitHub username and discover their repositories.
+- **Interactive User Accordion**: Expand and collapse user repositories with details.
+- **Loading States**: Enjoy a smooth user experience with skeleton loaders during data fetching.
+- **Error Handling**: User-friendly alerts to inform about potential issues.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **React**: A powerful JavaScript library for building user interfaces.
+- **Material-UI (MUI)**: A popular React UI framework for implementing beautiful and responsive designs.
+- **TypeScript**: A superset of JavaScript that adds static types, ensuring a more robust codebase.
+- **React Query**: A powerful library for managing server state in React applications.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Getting Started
 
-## Learn More
+To get started with the app, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the Repository**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/ncoi/simple-system-code-challenge.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Navigate to the Project Directory**:
 
-## Deploy on Vercel
+   ```bash
+    cd simple-system-code-challenge
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Install Dependencies**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm install
+   ```
+
+4. **Run the App**:
+   ```bash
+   npm run dev
+   ```
+
+Your app should now be running on http://localhost:3000!
+
+## 📖 How to Use
+
+- **Enter a GitHub username in the search input.**
+- **Click on the Search button to retrieve the user data.**
+- **Expand the user to see their repositories and related information.**
+- **Enjoy exploring!**
