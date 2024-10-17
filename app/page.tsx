@@ -70,7 +70,10 @@ export default function Dashboard() {
                     endAdornment: (
                       <InputAdornment position="end">
                         {username && (
-                          <IconButton onClick={() => setUsername("")}>
+                          <IconButton
+                            onClick={() => setUsername("")}
+                            data-testid="clearBtn"
+                          >
                             <ClearIcon />
                           </IconButton>
                         )}
@@ -110,7 +113,7 @@ export default function Dashboard() {
       )}
       {error && (
         <Alert severity="error" icon={<ErrorIcon />}>
-          Something went wrong. Please try again later.
+          {error.message} || Something went wrong. Please try again later.
         </Alert>
       )}
       {!isLoading &&

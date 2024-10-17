@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { GithubUser } from "@/app/lib/types";
+import { GithubRepo, GithubUser } from "@/app/lib/types";
 import {
   Accordion,
   AccordionSummary,
@@ -43,6 +43,7 @@ export default function UserAccordion({ user }: { user: GithubUser }) {
         expandIcon={<ExpandMoreIcon />}
         aria-controls={`panel-content-${user.id}`}
         id={`panel-header-${user.id}`}
+        data-testid={`accordion-summary-${user.id}`}
       >
         <Typography variant="h6" component="h2">
           {user.login}
@@ -52,17 +53,24 @@ export default function UserAccordion({ user }: { user: GithubUser }) {
         {isLoading &&
           [1, 2, 3].map((item) => (
             <Box key={item} sx={{ my: 2 }}>
-              <Skeleton variant="text" width="60%" height={30} />
-              <Skeleton variant="rectangular" height={60} />
+              <Skeleton
+                variant="text"
+                width="60%"
+                height={30}
+                role="progressbar"
+              />
+              <Skeleton variant="rectangular" height={60} role="progressbar" />
             </Box>
           ))}
         {error && (
           <Alert severity="error" icon={<ErrorIcon />}>
-            Something went wrong. Please try again later.
+            {error.message} || Something went wrong. Please try again later.
           </Alert>
         )}
         {!isLoading &&
-          reposList.map((repo) => <RepositoryCard key={repo.id} repo={repo} />)}
+          reposList.map((repo: GithubRepo) => (
+            <RepositoryCard key={repo.id} repo={repo} />
+          ))}
         {!isLoading && reposList.length === 0 && (
           <Alert severity="info" icon={<InfoIcon />}>
             No repositories found.
