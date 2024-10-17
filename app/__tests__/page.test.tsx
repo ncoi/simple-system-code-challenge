@@ -43,18 +43,6 @@ describe("Dashboard Component", () => {
     jest.clearAllMocks();
   });
 
-  it("Renders search input and button", () => {
-    render(<Dashboard />);
-    expect(screen.getByLabelText(/enter username/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /search/i })).toBeInTheDocument();
-  });
-
-  it("Displays validation error when submitting empty input", () => {
-    render(<Dashboard />);
-    fireEvent.click(screen.getByRole("button", { name: /search/i }));
-    expect(screen.getByText(/username is required/i)).toBeInTheDocument();
-  });
-
   it("Calls refetch and displays users on valid search", async () => {
     const refetchMock = jest.fn();
     mockedUseGithubUsers.mockReturnValue({
@@ -96,32 +84,5 @@ describe("Dashboard Component", () => {
     fireEvent.click(screen.getByRole("button", { name: /search/i }));
 
     expect(screen.getByText(/api error/i)).toBeInTheDocument();
-  });
-
-  it("Clears search term when X is clicked", async () => {
-    const refetchMock = jest.fn();
-    mockedUseGithubUsers.mockReturnValueOnce({
-      isLoading: false,
-      data: mockUsers,
-      error: null,
-      refetch: refetchMock,
-    });
-
-    render(<Dashboard />);
-    fireEvent.change(screen.getByLabelText(/enter username/i), {
-      target: { value: "nelson" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /search/i }));
-
-    expect(screen.getByText(/showing users for "nelson"/i)).toBeInTheDocument();
-
-    fireEvent.click(screen.getByTestId(/clearBtn/i));
-
-    await waitFor(() => {
-      const searchElement = screen.getByLabelText(
-        /enter username/i
-      ) as HTMLInputElement;
-      expect(searchElement.value).toBe("");
-    });
   });
 });

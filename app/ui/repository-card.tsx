@@ -2,7 +2,11 @@ import { Card, CardContent, Typography, Link, Stack } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { GithubRepo } from "@/app/lib/types";
 
-export default function RepositoryCard({ repo }: { repo: GithubRepo }) {
+interface RepositoryCardProps {
+  repo: GithubRepo;
+}
+
+export default function RepositoryCard({ repo }: RepositoryCardProps) {
   return (
     <Card
       sx={{

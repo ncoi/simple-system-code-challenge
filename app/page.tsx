@@ -2,23 +2,18 @@
 
 import { useState, useEffect } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  TextField,
-  Button,
   Grid2 as Grid,
   Container,
   Typography,
   Skeleton,
   Alert,
-  InputAdornment,
-  IconButton,
 } from "@mui/material";
-import ClearIcon from "@mui/icons-material/Clear";
 import UserAccordion from "@/app/ui/user-accordion";
+import SearchForm from "@/app/ui/search-form";
 import { useGithubUsers } from "@/app/lib/hooks";
 import InfoIcon from "@mui/icons-material/Info";
 import ErrorIcon from "@mui/icons-material/Error";
+import { GithubUser } from "./lib/types";
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -52,52 +47,12 @@ export default function Dashboard() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 5 }}>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12, md: 8 }}>
-            <FormControl variant="standard" fullWidth>
-              <TextField
-                error={validationError}
-                label="Enter Username"
-                size="small"
-                id="username"
-                variant="standard"
-                aria-describedby="username-helper-text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                slotProps={{
-                  input: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        {username && (
-                          <IconButton
-                            onClick={() => setUsername("")}
-                            data-testid="clearBtn"
-                          >
-                            <ClearIcon />
-                          </IconButton>
-                        )}
-                      </InputAdornment>
-                    ),
-                  },
-                }}
-              />
-              {validationError && (
-                <FormHelperText id="username-helper-text" error>
-                  Username is required
-                </FormHelperText>
-              )}
-            </FormControl>
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <FormControl variant="standard" fullWidth>
-              <Button size="large" variant="outlined" type="submit" fullWidth>
-                Search
-              </Button>
-            </FormControl>
-          </Grid>
-        </Grid>
-      </form>
+      <SearchForm
+        username={username}
+        setUsername={setUsername}
+        handleSubmit={handleSubmit}
+        validationError={validationError}
+      />
       {isLoading && (
         <>
           <Skeleton variant="rounded" height={56} sx={{ my: 1 }} />
@@ -117,7 +72,7 @@ export default function Dashboard() {
         </Alert>
       )}
       {!isLoading &&
-        userList.map((user) => (
+        userList.map((user: GithubUser) => (
           <Grid key={user.id} size={{ xs: 12 }}>
             <UserAccordion user={user} />
           </Grid>

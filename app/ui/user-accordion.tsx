@@ -15,7 +15,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import ErrorIcon from "@mui/icons-material/Error";
 import { useGithubRepos } from "@/app/lib/hooks";
 
-export default function UserAccordion({ user }: { user: GithubUser }) {
+interface UserAccordionProps {
+  user: GithubUser;
+}
+
+export default function UserAccordion({ user }: UserAccordionProps) {
   const [expanded, setExpanded] = useState(false);
   const hasFetched = useRef(false);
 
