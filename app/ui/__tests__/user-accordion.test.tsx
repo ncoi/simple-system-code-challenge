@@ -85,7 +85,7 @@ describe("UserAccordion Component", () => {
     render(<UserAccordion user={mockUser} />);
 
     expect(
-      screen.getByText(/Failed to fetch repositories\./i)
+      screen.getByText(/Something went wrong. Please try again later\./i)
     ).toBeInTheDocument();
   });
 

@@ -68,7 +68,7 @@ export default function Dashboard() {
       )}
       {error && (
         <Alert severity="error" icon={<ErrorIcon />}>
-          {error.message} || Something went wrong. Please try again later.
+          Something went wrong. Please try again later.
         </Alert>
       )}
       {!isLoading &&
@@ -77,7 +77,7 @@ export default function Dashboard() {
             <UserAccordion user={user} />
           </Grid>
         ))}
-      {!isLoading && searchTerm && userList.length === 0 && (
+      {!isLoading && !error && searchTerm && userList.length === 0 && (
         <Alert severity="info" sx={{ my: 2 }} icon={<InfoIcon />}>
           No users found.
         </Alert>

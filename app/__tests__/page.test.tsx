@@ -83,6 +83,8 @@ describe("Dashboard Component", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /search/i }));
 
-    expect(screen.getByText(/api error/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Something went wrong. Please try again later\./i)
+    ).toBeInTheDocument();
   });
 });

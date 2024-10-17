@@ -68,14 +68,14 @@ export default function UserAccordion({ user }: UserAccordionProps) {
           ))}
         {error && (
           <Alert severity="error" icon={<ErrorIcon />}>
-            {error.message} || Something went wrong. Please try again later.
+            Something went wrong. Please try again later.
           </Alert>
         )}
         {!isLoading &&
           reposList.map((repo: GithubRepo) => (
             <RepositoryCard key={repo.id} repo={repo} />
           ))}
-        {!isLoading && reposList.length === 0 && (
+        {!isLoading && !error && reposList.length === 0 && (
           <Alert severity="info" icon={<InfoIcon />}>
             No repositories found.
           </Alert>
