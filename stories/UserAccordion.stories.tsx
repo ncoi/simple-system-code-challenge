@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import UserAccordion from "@/app/ui/user-accordion"; // Adjust import based on your project structure
+import UserAccordion from "@/app/ui/user-accordion";
 import { GithubUser, GithubRepo } from "@/app/lib/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -8,7 +8,6 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: Infinity,
-      cacheTime: Infinity,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       retry: false,
